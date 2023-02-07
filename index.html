@@ -7,6 +7,28 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="global-container">
+      <img
+        src="ressources/wiki-logo.png"
+        alt="Logo de wikipedia"
+        class="logo"
+      />
+      <h1>recherche <span>Wikipedia</span></h1>
+      <form>
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Rechercher un terme"
+        />
+      </form>
+      <p class="error-msg"></p>
+      <div class="result-display"></div>
+      <div class="loader">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
 
     <script src="app.js"></script>
   </body>
