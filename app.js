@@ -3,6 +3,9 @@
 const form = document.querySelector("form");
 const input = document.querySelector("input");
 const errorMsg = document.querySelector(".error-msg");
+const resultDisplay = document.querySelector(".result-display");
+
+const loader = document.querySelector(".loader");
 
 form.addEventListener("submit", handleSubmit);
 
@@ -14,19 +17,31 @@ function handleSubmit(e) {
     return;
   } else {
     errorMsg.textContent = "";
+    loader.style.display = "flex";
+    resultDisplay.textContent = "";
     wikiApiCall(input.value);
   }
 }
 
 async function wikiApiCall(searchInput) {
-  const response = await fetch(
-    `https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&origin=*&srlimit=20&srsearch=${searchInput}`
-  );
-  const data = await response.json();
+  try {
+    const response = await fetch(
+      `https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&origin=*&srlimit=20&srsearch=${searchInput}`
+    );
 
-  console.log(data);
+    if (!response.ok) {
+      throw new Error(`${response.status}`);
+    }
 
-  creatCards(data.query.search);
+    const data = await response.json();
+
+    console.log(data);
+
+    creatCards(data.query.search);
+  } catch (error) {
+    errorMsg.textContent = `${error}`;
+    loader.style.display = "none";
+  }
 }
 
 function creatCards(data) {
@@ -34,7 +49,6 @@ function creatCards(data) {
     errorMsg.textContent = "Oops, aucuns résultat";
     return;
   }
-  const resultDisplay = document.querySelector(".result-display");
 
   data.forEach((el) => {
     const url = `https://en.wikipedia.org/?curid=${el.pageid}`;
