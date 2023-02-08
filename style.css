@@ -25,6 +25,10 @@ body {
 
 h1 {
   margin-bottom: 1rem;
+  font-weight: 400;
+}
+h1 span {
+  font-weight: 600;
 }
 
 form input {
@@ -45,4 +49,12 @@ form input {
 
 .result-display {
   width: 70%;
+}
+.result-item {
+  margin-bottom: 1rem;
+}
+.result-link {
+  text-decoration: none;
+  color: #406f31;
+  font-size: 13px;
 }

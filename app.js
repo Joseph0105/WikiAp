@@ -60,7 +60,7 @@ function creatCards(data) {
     <a href=${url}
  target= "_blank">${el.title}</a>
  </h3> 
- <a href=${url} class="result-link" target="_blank">${url}</a>
+ <a href=${url} class="result-link" target="_blank">${url}</a><br>
  <span class="result-snippet">${el.snippet}</span>
  <br> `;
     resultDisplay.appendChild(card);
