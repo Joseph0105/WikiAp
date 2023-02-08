@@ -81,6 +81,7 @@ form input {
 .result-display {
   max-width: 600px;
   width: 70%;
+  margin: 0 auto;
 }
 .result-item {
   margin-bottom: 1rem;
