@@ -47,6 +47,7 @@ async function wikiApiCall(searchInput) {
 function creatCards(data) {
   if (!data.length) {
     errorMsg.textContent = "Oops, aucuns résultat";
+    loader.style.display = "none";
     return;
   }
 
@@ -64,4 +65,5 @@ function creatCards(data) {
  <br> `;
     resultDisplay.appendChild(card);
   });
+  loader.style.display = "none";
 }
